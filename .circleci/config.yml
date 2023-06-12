@@ -21,7 +21,7 @@ jobs:
           application: android-app/app/build/outputs/apk/debug/app-debug.apk
           testApplication: android-app/app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
 workflows:
-  say-hello-workflow:
+  testing-workflow:
     jobs:
       - build
       - test
