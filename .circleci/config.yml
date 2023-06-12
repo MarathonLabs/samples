@@ -26,7 +26,7 @@ jobs:
       - attach_workspace:
           at: .
       - run:
-          command: marathon-cloud -api-key $MARATHON_CLOUD_API_TOKEN -apk android-app/app/build/outputs/apk/debug/app-debug.apk -testapk android-app/app/build/outputs/apk/androidtest/debug/app-debug-androidTest.apk
+          command: marathon-cloud -api-key $MARATHON_CLOUD_API_TOKEN -apk android-app/app/build/outputs/apk/debug/app-debug.apk -testapk android-app/app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
       # - marathon-cloud/run_tests:
       #     apiKey: $MARATHON_CLOUD_API_TOKEN
       #     application: android-app/app/build/outputs/apk/debug/app-debug.apk
