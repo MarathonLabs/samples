@@ -25,10 +25,12 @@ jobs:
     steps:
       - attach_workspace:
           at: .
-      - marathon-cloud/run_tests:
-          apiKey: $MARATHON_CLOUD_API_TOKEN
-          application: android-app/app/build/outputs/apk/debug/app-debug.apk
-          testApplication: android-app/app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
+      - run:
+          command: marathon-cloud -api-key $ORB_API_KEY -apk android-app/app/build/outputs/apk/debug/app-debug.apk -testapk android-app/app/build/outputs/apk/androidtest/debug/app-debug-androidtest.apk
+      # - marathon-cloud/run_tests:
+      #     apiKey: $MARATHON_CLOUD_API_TOKEN
+      #     application: android-app/app/build/outputs/apk/debug/app-debug.apk
+      #     testApplication: android-app/app/build/outputs/apk/androidtest/debug/app-debug-androidtest.apk
 workflows:
   testing-workflow:
     jobs:
