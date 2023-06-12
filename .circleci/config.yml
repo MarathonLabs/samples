@@ -1,0 +1,38 @@
+version: 2.1
+orbs:
+  android: circleci/android@2.3.0
+  marathon-cloud: marathonlabs/marathon-cloud-orb@0.2.3
+jobs:
+  build:
+    executor:
+      name: android/android-docker
+      tag: 2023.06.1
+    steps:
+      - checkout
+      - android/restore-gradle-cache
+      - run:
+          name: assemble
+          command: ./gradlew assembleDebug assembleAndroidTest
+          working_directory: android-app
+      - persist_to_workspace:
+          root: .
+          paths:
+            - android-app/app/build/outputs/apk/debug/app-debug.apk
+            - android-app/app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk 
+      - android/save-gradle-cache
+  test:
+    executor: marathon-cloud/default
+    steps:
+      - attach_workspace:
+          at: .
+      - marathon-cloud/run_tests:
+          apiKeyEnvVar: MARATHON_CLOUD_API_TOKEN
+          application: android-app/app/build/outputs/apk/debug/app-debug.apk
+          testApplication: android-app/app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
+workflows:
+  testing-workflow:
+    jobs:
+      - build
+      - test:
+          requires:
+          - build
