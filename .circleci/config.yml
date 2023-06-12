@@ -1,7 +1,7 @@
 version: 2.1
 orbs:
   android: circleci/android@2.3.0
-  marathon-cloud: marathonlabs/marathon-cloud-orb@0.1.0
+  marathon-cloud: marathonlabs/marathon-cloud-orb@0.2.0
 jobs:
   build:
     executor:
@@ -26,7 +26,7 @@ jobs:
       - attach_workspace:
           at: .
       - marathon-cloud/run_tests:
-          apiKey: $MARATHON_CLOUD_API_TOKEN
+          apiKeyEnvVar: MARATHON_CLOUD_API_TOKEN
           application: android-app/app/build/outputs/apk/debug/app-debug.apk
           testApplication: android-app/app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
 workflows:
