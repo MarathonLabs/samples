@@ -13,6 +13,7 @@ jobs:
       - run:
           name: assemble
           command: ./gradlew assembleDebug assembleAndroidTest
+          working_directory: android-app
       - persist_to_workspace:
           root: .
           paths:
