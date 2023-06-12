@@ -13,10 +13,17 @@ jobs:
       - run:
           name: assemble
           command: ./gradlew assembleDebug assembleAndroidTest
+      - persist_to_workspace:
+          root: .
+          paths:
+            - android-app/app/build/outputs/apk/debug/app-debug.apk
+            - android-app/app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk 
       - android/save-gradle-cache
   test:
     executor: marathon-cloud/default
     steps:
+      - attach_workspace:
+          at: .
       - marathon-cloud/run_tests:
           apiKey: $MARATHON_CLOUD_API_TOKEN
           application: android-app/app/build/outputs/apk/debug/app-debug.apk
@@ -25,4 +32,6 @@ workflows:
   testing-workflow:
     jobs:
       - build
-      - test
+      - test:
+          requires:
+          - build
