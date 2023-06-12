@@ -1,7 +1,7 @@
 version: 2.1
 orbs:
   android: circleci/android@2.3.0
-  marathon-cloud: marathonlabs/marathon-cloud-orb@0.2.0
+  marathon-cloud: marathonlabs/marathon-cloud-orb@0.2.3
 jobs:
   build:
     executor:
