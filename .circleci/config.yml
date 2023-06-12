@@ -6,6 +6,7 @@ jobs:
   build:
     executor:
       name: android/android-docker
+      tag: 2023.06.1
     steps:
       - checkout
       - android/restore-gradle-cache
