@@ -14,3 +14,9 @@ jobs:
       - name: Build app
         working-directory: android-app
         run: ./gradlew assembleDebug assembleAndroidTest
+      - run: |
+          curl -L https://github.com/MarathonLabs/marathon-cloud-cli/releases/download/0.1.2/marathon-cloud_linux_amd64-0.1.2.tar.gz -o marathon-cloud.tar.gz
+          tar -xf marathon-cloud.tar.gz
+          ./marathon-cloud -api-key $TOKEN -apk android-app/app/build/outputs/apk/debug/app-debug.apk -testapk android-app/app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk 
+        env:
+          TOKEN=${{ secrets.MARATHON_CLOUD_CLI_TOKEN }}
