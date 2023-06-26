@@ -21,3 +21,4 @@ jobs:
           application: android-app/app/build/outputs/apk/debug/app-debug.apk
           testApplication: android-app/app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
           githubToken: ${{ secrets.GITHUB_TOKEN }}
+          platform: Android
