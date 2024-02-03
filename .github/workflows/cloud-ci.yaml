@@ -25,6 +25,7 @@ jobs:
           echo "$MARATHON_PATH" >> $GITHUB_PATH
       - name: Run tests
         run: |
-          marathon-cloud run android --os-version 11 -a android-app/app/build/outputs/apk/debug/app-debug.apk -t android-app/app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
+          mkdir -p results
+          marathon-cloud run android --os-version 11 -a android-app/app/build/outputs/apk/debug/app-debug.apk -t android-app/app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk -o results
         env:
           MARATHON_CLOUD_API_KEY: ${{ secrets.MARATHON_CLOUD_API_TOKEN }}
