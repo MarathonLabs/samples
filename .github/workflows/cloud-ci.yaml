@@ -26,6 +26,6 @@ jobs:
       - name: Run tests
         run: |
           mkdir -p results
-          marathon-cloud run android --os-version 11 -a android-app/app/build/outputs/apk/debug/app-debug.apk -t android-app/app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk -o results
+          marathon-cloud run -o results android --os-version 11 -a android-app/app/build/outputs/apk/debug/app-debug.apk -t android-app/app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
         env:
           MARATHON_CLOUD_API_KEY: ${{ secrets.MARATHON_CLOUD_API_TOKEN }}
