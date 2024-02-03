@@ -14,11 +14,17 @@ jobs:
       - name: Build app
         working-directory: android-app
         run: ./gradlew assembleDebug assembleAndroidTest
+      - name: Install marathon-cli-v2
+        shell: bash
+        run: |
+          curl -L https://github.com/Malinskiy/marathon-cloud-cli/releases/download/1.0.16/marathon-cloud-v1.0.16-x86_64-unknown-linux-gnu.tar.gz -o ./marathon-cloud.tar.gz
+          tar -xzvf marathon-cloud.tar.gz
+          mkdir marathon-cloud
+          tar -xzvf marathon-cloud.tar.gz -C marathon-cloud --strip-components 1
+          MARATHON_PATH=$(pwd)/marathon-cloud
+          echo "$MARATHON_PATH" >> $GITHUB_PATH
       - name: Run tests
-        uses: MarathonLabs/action-test@main
-        with:
-          apiKey: ${{ secrets.MARATHON_CLOUD_API_TOKEN }}
-          application: android-app/app/build/outputs/apk/debug/app-debug.apk
-          testApplication: android-app/app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
-          platform: Android
+        run: |
+          marathon-cloud run android --os-version 11 -a android-app/app/build/outputs/apk/debug/app-debug.apk -t android-app/app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
+        env:
+          MARATHON_CLOUD_API_KEY: ${{ secrets.MARATHON_CLOUD_API_TOKEN }}
