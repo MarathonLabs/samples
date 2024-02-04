@@ -17,7 +17,7 @@ jobs:
       - name: Install marathon-cli-v2
         shell: bash
         run: |
-          curl -L https://github.com/Malinskiy/marathon-cloud-cli/releases/download/1.0.16/marathon-cloud-v1.0.16-x86_64-unknown-linux-gnu.tar.gz -o ./marathon-cloud.tar.gz
+          curl -L https://github.com/Malinskiy/marathon-cloud-cli/releases/download/1.0.20/marathon-cloud-v1.0.20-x86_64-unknown-linux-gnu.tar.gz -o ./marathon-cloud.tar.gz
           tar -xzvf marathon-cloud.tar.gz
           mkdir marathon-cloud
           tar -xzvf marathon-cloud.tar.gz -C marathon-cloud --strip-components 1
@@ -26,6 +26,6 @@ jobs:
       - name: Run tests
         run: |
           mkdir -p results
-          marathon-cloud run -o results android --os-version 11 -a android-app/app/build/outputs/apk/debug/app-debug.apk -t android-app/app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
+          marathon-cloud run android -a android-app/app/build/outputs/apk/debug/app-debug.apk -t android-app/app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk -o results --os-version 11
         env:
           MARATHON_CLOUD_API_KEY: ${{ secrets.MARATHON_CLOUD_API_TOKEN }}
