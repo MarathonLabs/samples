@@ -17,7 +17,7 @@ jobs:
       - name: Install marathon-cli-v2
         shell: bash
         run: |
-          curl -L https://github.com/Malinskiy/marathon-cloud-cli/releases/download/1.0.22/marathon-cloud-v1.0.22-x86_64-unknown-linux-gnu.tar.gz -o ./marathon-cloud.tar.gz
+          curl -L https://github.com/Malinskiy/marathon-cloud-cli/releases/download/1.0.23/marathon-cloud-v1.0.23-x86_64-unknown-linux-gnu.tar.gz -o ./marathon-cloud.tar.gz
           tar -xzvf marathon-cloud.tar.gz
           mkdir marathon-cloud
           tar -xzvf marathon-cloud.tar.gz -C marathon-cloud --strip-components 1
