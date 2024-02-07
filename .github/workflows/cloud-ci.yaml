@@ -14,9 +14,9 @@ jobs:
       - name: Build app
         working-directory: android-app
         run: ./gradlew assembleDebug assembleAndroidTest
-      - uses: MarathonLabs/setup-marathon-cloud@2
+      - uses: MarathonLabs/setup-marathon-cloud@fix/download
         with:
-          version: "1.0.0"
+          version: "1.0.1"
       - name: run tests using marathon-cloud
         uses: MarathonLabs/action-invoke@0
         with:
