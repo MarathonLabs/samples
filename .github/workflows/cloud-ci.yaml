@@ -17,8 +17,9 @@ jobs:
       - uses: MarathonLabs/setup-marathon-cloud@fix/download
         with:
           version: "1.0.1"
+      - run: marathon-cloud --help
       - name: run tests using marathon-cloud
-        uses: MarathonLabs/action-invoke@0
+        uses: MarathonLabs/action-invoke@feature/support-cli-v1
         with:
           apiKey: ${{ secrets.MARATHON_CLOUD_API_TOKEN }}
           application: android-app/app/build/outputs/apk/debug/app-debug.apk
