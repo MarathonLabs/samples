@@ -19,6 +19,7 @@ jobs:
           version: "1.0.1"
       - run: |
           echo $PATH
+          ls -l /opt/hostedtoolcache/marathon-cloud/1.0.1/x64/ || true
           marathon-cloud --help
       - name: run tests using marathon-cloud
         uses: MarathonLabs/action-invoke@feature/support-cli-v1
