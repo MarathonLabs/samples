@@ -13,6 +13,7 @@ jobs:
           testApplication: maestro/android/flows
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           platform: maestro/android
+          version: 1.0.51
   run-maestro-ios-tests:
     runs-on: ubuntu-latest
     steps:
@@ -25,3 +26,4 @@ jobs:
           testApplication: maestro/ios/flows
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           platform: maestro/ios
+          version: 1.0.51
