@@ -11,7 +11,6 @@ jobs:
           apiKey: ${{ secrets.MARATHON_CLOUD_API_TOKEN }}
           application: maestro/android/wikipedia.apk
           testApplication: maestro/android/flows
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
           platform: maestro/android
           version: 1.0.51
   run-maestro-ios-tests:
@@ -24,6 +23,5 @@ jobs:
           apiKey: ${{ secrets.MARATHON_CLOUD_API_TOKEN }}
           application: maestro/ios/wikipedia.zip
           testApplication: maestro/ios/flows
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
           platform: maestro/ios
           version: 1.0.51
