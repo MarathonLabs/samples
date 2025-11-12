@@ -1,16 +1,12 @@
-name: Run tests
+name: Run maestro tests
 on: push
 jobs:
   run-maestro-android-tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: MarathonLabs/setup-marathon-cloud@2
-        with:
-          version: "1.0.51"
-          skip-cache: "true"
       - name: Run tests
-        uses: MarathonLabs/action-invoke@feature/support-maestro
+        uses: MarathonLabs/action-test@feature/maestro
         with:
           apiKey: ${{ secrets.MARATHON_CLOUD_API_TOKEN }}
           application: maestro/android/wikipedia.apk
@@ -21,12 +17,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: MarathonLabs/setup-marathon-cloud@2
-        with:
-          version: "1.0.51"
-          skip-cache: "true"
       - name: Run tests
-        uses: MarathonLabs/action-invoke@feature/support-maestro
+        uses: MarathonLabs/action-test@feature/maestro
         with:
           apiKey: ${{ secrets.MARATHON_CLOUD_API_TOKEN }}
           application: maestro/ios/wikipedia.zip
