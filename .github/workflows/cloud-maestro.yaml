@@ -1,0 +1,27 @@
+name: Run maestro tests
+on: push
+jobs:
+  run-maestro-android-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run tests
+        uses: MarathonLabs/action-test@main
+        with:
+          apiKey: ${{ secrets.MARATHON_CLOUD_API_TOKEN }}
+          application: maestro/android/wikipedia.apk
+          testApplication: maestro/android/flows
+          platform: maestro/android
+          version: 1.0.51
+  run-maestro-ios-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run tests
+        uses: MarathonLabs/action-test@main
+        with:
+          apiKey: ${{ secrets.MARATHON_CLOUD_API_TOKEN }}
+          application: maestro/ios/wikipedia.zip
+          testApplication: maestro/ios/flows
+          platform: maestro/ios
+          version: 1.0.51
