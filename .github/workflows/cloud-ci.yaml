@@ -22,3 +22,4 @@ jobs:
           testApplication: android-app/app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           platform: Android
+          version: 1.0.51
