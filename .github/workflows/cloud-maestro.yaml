@@ -12,7 +12,8 @@ jobs:
           application: maestro/android/wikipedia.apk
           testApplication: maestro/android/flows
           platform: maestro/android
-          version: 1.0.51
+          arch: arm64
+          version: 1.0.65
   run-maestro-ios-tests:
     runs-on: ubuntu-latest
     steps:
@@ -24,4 +25,4 @@ jobs:
           application: maestro/ios/wikipedia.zip
           testApplication: maestro/ios/flows
           platform: maestro/ios
-          version: 1.0.51
+          version: 1.0.65
